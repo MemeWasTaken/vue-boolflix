@@ -1,5 +1,6 @@
 <template>
     <main>
+        <!-- <button class="btn btn-primary" @click="getMovies()"> asdasd </button> -->
     </main>
 </template>
 
@@ -10,16 +11,24 @@
         name: "Main",
         data() {
             return {
-                tryout: "all",
                 movies: null,
             };
+        },
+        props: {
+            inq: String,
+        },
+        mounted() {
+            if (this.inq !== " ") {
+                this.getMovies();
+            }
         },
         methods: {
             getMovies() {
                 axios
-                    .get(`https://api.themoviedb.org/3/search/movie?api_key=9da47a4b22fa9d371b93ff9409a34189&query=${this.tryout}`)
+                    .get(`https://api.themoviedb.org/3/search/movie?api_key=9da47a4b22fa9d371b93ff9409a34189&query=${this.inq}`)
                     .then((result) => {
                         console.log(result.data.results);
+                        console.log(this.inq);
                     })
                     .catch((error) => {
                         console.log(error);

@@ -3,7 +3,7 @@
 		<Header
 			@userQuery="sendToMain($event)"
 		/>
-		<Main></Main>
+		<Main :inq="inquiry"></Main>
   	</div>
 </template>
 
