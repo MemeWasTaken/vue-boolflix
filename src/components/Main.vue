@@ -1,39 +1,44 @@
 <template>
     <main>
-        <!-- <button class="btn btn-primary" @click="getMovies()"> asdasd </button> -->
+        <div v-if="cards.length > 0">
+            <Card
+                v-for="(card, index) in cards"
+                :key="index"
+                :info="card"
+            />
+        </div>
+        <div v-else>
+            Siamo spiacenti ma la ricerca non ha prodotto nessun risultato
+        </div>
     </main>
 </template>
 
 <script>
-    import axios from 'axios';
+    import Card from "./Card.vue"
 
     export default {
         name: "Main",
+        components: {
+            Card,
+        },
         data() {
             return {
-                movies: null,
+                
             };
         },
         props: {
-            inq: String,
+            cards: {
+                type: Array,
+                default() {
+                    return [];
+                },
+            },
         },
         mounted() {
-            if (this.inq !== " ") {
-                this.getMovies();
-            }
+            
         },
         methods: {
-            getMovies() {
-                axios
-                    .get(`https://api.themoviedb.org/3/search/movie?api_key=9da47a4b22fa9d371b93ff9409a34189&query=${this.inq}`)
-                    .then((result) => {
-                        console.log(result.data.results);
-                        console.log(this.inq);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            },
+            
         },
         
     }
@@ -42,7 +47,7 @@
 <style lang="scss" scoped>
     main {
         background-color: #434343;
-        width: 100%;
         height: calc(100vh - 100px);
+        width: 100%;
     }
 </style>
