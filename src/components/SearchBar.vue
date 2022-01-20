@@ -2,12 +2,13 @@
     <div class="search">
         <input
             id="search"
+            class="form-control d-inline-block"
             v-model="textSearch"
             type="text"
             name="search"
         >
         <button
-            class="btn btn-primary"
+            class="btn btn-outline-danger"
             type="submit"
             @click="$emit('search', textSearch)"
             >

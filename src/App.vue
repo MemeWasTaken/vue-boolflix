@@ -18,7 +18,7 @@ import Main from "./components/Main.vue";
 		data() {
 			return {
 				inquiry: "",
-				cards: null,
+				cards: [],
 			};
 		},
 		components: {
