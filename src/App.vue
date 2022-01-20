@@ -3,7 +3,7 @@
 		<Header
 			@userQuery="sendToMain($event)"
 		/>
-		<Main :cards="cards"></Main>
+		<Main :all="this.all"></Main>
   	</div>
 </template>
 
@@ -18,7 +18,10 @@ import Main from "./components/Main.vue";
 		data() {
 			return {
 				inquiry: "",
-				cards: [],
+				all: {
+					movies: [],
+					series: [],
+				},
 			};
 		},
 		components: {
@@ -29,18 +32,32 @@ import Main from "./components/Main.vue";
 		methods: {
 			sendToMain(text) {
 				this.inquiry = text;
-				console.log(this.inquiry);
+				// console.log(this.inquiry);
 				this.getMovies();
+				this.getSeries();
 				return this.inquiry
 			},
 			getMovies() {
 				axios
 					.get(`https://api.themoviedb.org/3/search/movie?api_key=9da47a4b22fa9d371b93ff9409a34189&query=${this.inquiry}`)
 					.then((result) => {
-						// console.log(result.data.results);
-						this.cards = result.data.results;
-						// console.log(this.inquiry);
-						console.log(this.cards);
+						
+						this.all.movies = result.data.results;
+						
+						console.log(this.all.movies);
+					})
+					.catch((error) => {
+						console.log(error);
+					});
+			},
+			getSeries() {
+				axios
+					.get(`https://api.themoviedb.org/3/search/tv?api_key=9da47a4b22fa9d371b93ff9409a34189&query=${this.inquiry}`)
+					.then((result) => {
+						
+						this.all.series = result.data.results;
+						
+						console.log(this.all.series);
 					})
 					.catch((error) => {
 						console.log(error);

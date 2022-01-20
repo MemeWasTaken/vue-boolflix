@@ -30,6 +30,8 @@
                         return 'pk' ;
                     case 'zh' :
                         return 'cn' ;
+                    case 'el' :
+                        return 'gr' ;
                 
                     default:
                         return lang ;
