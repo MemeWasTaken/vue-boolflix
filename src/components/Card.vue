@@ -7,7 +7,13 @@
         <li> {{ title }} </li>
         <li> {{ originalTitle }} </li>
         <li> <i :class="'flag flag-' + getFlag(lang)"></i> </li>
-        <li> {{ rate }} </li>
+        <li>
+            <i
+            v-for="vote in 5"
+            :key="vote"
+            :class="(vote <= roundNumber(rate)) ? 'fas fa-star' : 'far fa-star'"
+            />
+        </li>
     </ul>
 </template>
 
@@ -44,7 +50,11 @@
                         return lang ;
 
                 }
-            }
+            },
+            roundNumber(num) {
+                const number = parseFloat(num);
+                return Math.round(number / 2);
+             },
         },
     };
 </script>
