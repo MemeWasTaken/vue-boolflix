@@ -3,6 +3,7 @@
         <div v-if="all.movies.length > 0">
             <Card
                 v-for="(movie, index) in all.movies" :key="'movies'+index"
+                :poster="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
                 :title="movie.title"
                 :originalTitle="movie.original_title"
                 :lang="movie.original_language"
@@ -15,6 +16,7 @@
         <div v-if="all.series.length > 0">
             <Card
                 v-for="(serie, index) in all.series" :key="'series'+index"
+                :poster="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
                 :title="serie.name"
                 :originalTitle="serie.original_name"
                 :lang="serie.original_language"

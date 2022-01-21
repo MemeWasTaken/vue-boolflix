@@ -1,5 +1,6 @@
 <template>
     <ul class="card">
+        <li> <img :src="poster" alt=""> </li>
         <li> {{ title }} </li>
         <li> {{ originalTitle }} </li>
         <li> <i :class="'flag flag-' + getFlag(lang)"></i> </li>
@@ -11,11 +12,13 @@
     export default {
         name: "Card",
         props: [
-            // info: Object,
+            // info: Object,'
+            'poster',
             'title',
             'originalTitle',
             'lang',
-            'rate'
+            'rate',
+            
         ],
         methods: {
             getFlag(lang) {
@@ -32,7 +35,8 @@
                         return 'cn' ;
                     case 'el' :
                         return 'gr' ;
-                
+                    case 'hi' :
+                        return 'in' ;
                     default:
                         return lang ;
 
