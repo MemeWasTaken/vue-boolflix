@@ -1,6 +1,9 @@
 <template>
     <ul class="card">
-        <li> <img :src="poster" alt=""> </li>
+        <li>
+            <img v-if="image" :src="poster" alt="" class="img-poster"> 
+            <img v-else src="https://yify-subs.net/images/default_thumbnail.svg" alt="" class="img-placeholder">
+        </li>
         <li> {{ title }} </li>
         <li> {{ originalTitle }} </li>
         <li> <i :class="'flag flag-' + getFlag(lang)"></i> </li>
@@ -12,7 +15,7 @@
     export default {
         name: "Card",
         props: [
-            // info: Object,'
+            'image',
             'poster',
             'title',
             'originalTitle',
@@ -46,6 +49,16 @@
     };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+    .img-poster {
+        border-radius: 15px;
+    }
+
+    .img-placeholder {
+        width: 342px;
+        height: auto;
+        border-radius: 15px;
+    }
 
 </style>
