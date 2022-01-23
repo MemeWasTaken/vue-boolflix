@@ -70,5 +70,8 @@ import Main from "./components/Main.vue";
 <style lang="scss">
 	@import '~bootstrap/scss/bootstrap.scss';
 	@import '~mdb-ui-kit/css/mdb.min.css';
-
+	#app {
+		height: 100vh;
+		overflow-y:hidden;
+	}
 </style>

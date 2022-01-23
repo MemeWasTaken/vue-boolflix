@@ -1,6 +1,7 @@
 <template>
-    <main>
-        <div v-if="all.movies.length > 0">
+    <main class="container-fluid">
+
+        <div v-if="all.movies.length > 0" class="row row-cols-6">
             <Card
                 v-for="(movie, index) in all.movies" :key="'movies'+index"
                 :image="movie.poster_path"
@@ -9,12 +10,15 @@
                 :originalTitle="movie.original_title"
                 :lang="movie.original_language"
                 :rate="movie.vote_average"
+                :plot="movie.overview"
             />
         </div>
         <div v-else class="text-white">
             Siamo spiacenti ma la ricerca non ha prodotto film come risultato
         </div>
-        <div v-if="all.series.length > 0">
+
+    
+        <div v-if="all.series.length > 0" class="row row-cols-6">
             <Card
                 v-for="(serie, index) in all.series" :key="'series'+index"
                 :image="serie.poster_path"
@@ -23,11 +27,13 @@
                 :originalTitle="serie.original_name"
                 :lang="serie.original_language"
                 :rate="serie.vote_average"
+                :plot="serie.overview"
             />
         </div>
         <div v-else class="text-white">
             Siamo spiacenti ma la ricerca non ha prodotto nessuna serie tv risultato
         </div>
+
     </main>
 </template>
 
@@ -65,7 +71,7 @@
 <style lang="scss" scoped>
     main {
         background-color: #434343;
-        min-height: calc(100vh - 100px);
-        width: 100%;
+        height: calc(100vh - 100px);
+        overflow-y: auto;
     }
 </style>

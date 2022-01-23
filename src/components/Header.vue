@@ -1,5 +1,6 @@
 <template>
-    <header>
+    <header class="d-flex justify-content-between align-items-center">
+        <Logo />
         <SearchBar
             @search="formatQuery($event)"
         />
@@ -9,11 +10,13 @@
 <script>
     // import axios from 'axios';
     import SearchBar from './SearchBar.vue';
+    import Logo from './Logo.vue'
 
     export default {
         name: "Header",
         components: {
             SearchBar,
+            Logo,
         },
          data() {
             return {
@@ -43,5 +46,7 @@
         border-bottom: 2px solid #000000;
         width: 100%;
         height: 100px;
+        padding-left: 5em ;
+        padding-right: 5em ;
     }
 </style>

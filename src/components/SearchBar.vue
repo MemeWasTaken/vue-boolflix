@@ -1,14 +1,15 @@
 <template>
-    <div class="search">
+    <div class="search-bar d-flex align-items-center">
         <input
             id="search"
-            class="form-control d-inline-block"
+            class="form-control d-inline-block me-1"
             v-model="textSearch"
             type="text"
             name="search"
+            @keypress.enter="$emit('search', textSearch)"
         >
         <button
-            class="btn btn-outline-danger"
+            class="btn btn-outline-danger ms-1"
             type="submit"
             @click="$emit('search', textSearch)"
             >
@@ -29,8 +30,12 @@
 </script>
 
 <style lang="scss" scoped>
-    input {
-        height: 34px;
-        width: 250px;
+
+    .search-bar {
+
+        input {
+            height: 34px;
+            width: 250px;
+        }
     }
 </style>
